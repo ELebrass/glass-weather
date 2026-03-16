@@ -659,6 +659,171 @@
     .burgundy-card { width: 250px; }
   }
 
+  /* ============================================================
+     NAPOLEON DYNAMITE FEATURES
+     ============================================================ */
+
+  /* Vote for Pedro Banner */
+  #pedro-banner {
+    display: none;
+    margin-bottom: 24px;
+    border: 2px solid rgba(255,200,0,0.35);
+    background: rgba(12, 7, 0, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  #pedro-banner.active { display: flex; align-items: stretch; }
+  @keyframes pedro-pulse {
+    0%, 100% { border-color: rgba(255,200,0,0.35); box-shadow: 0 0 0 rgba(255,200,0,0); }
+    50% { border-color: rgba(255,200,0,0.7); box-shadow: 0 0 24px rgba(255,200,0,0.12); }
+  }
+  #pedro-banner.active { animation: pedro-pulse 3s ease-in-out infinite; }
+  .pedro-poster {
+    background: linear-gradient(160deg, #2a1800, #3d2400);
+    padding: 28px 24px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-width: 170px; border-right: 1px solid rgba(255,200,0,0.2);
+    gap: 6px;
+  }
+  .pedro-silhouette { font-size: 2.8rem; filter: drop-shadow(0 0 10px rgba(255,200,0,0.4)); }
+  .pedro-vote-text {
+    font-size: 1.55rem; font-weight: 900;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
+    font-family: Georgia, serif;
+    text-align: center; line-height: 1.1;
+  }
+  .pedro-vote-sub {
+    font-size: 0.6rem; color: rgba(255,215,0,0.5);
+    text-transform: uppercase; letter-spacing: 3px; margin-top: 2px;
+  }
+  .pedro-content { flex: 1; padding: 24px 28px; display: flex; flex-direction: column; justify-content: center; }
+  .pedro-alert-title {
+    font-size: 0.95rem; font-weight: 700;
+    color: #ffd700; margin-bottom: 8px;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .pedro-alert-desc { font-size: 0.95rem; color: rgba(255,255,255,0.82); line-height: 1.5; }
+  .pedro-napoleon-quote {
+    margin-top: 14px; font-size: 0.88rem; color: rgba(255,215,0,0.85);
+    font-style: italic; padding: 10px 14px;
+    background: rgba(255,200,0,0.07);
+    border-radius: var(--radius-xs);
+    border-left: 3px solid rgba(255,215,0,0.35);
+    line-height: 1.5;
+  }
+  .pedro-napoleon-attribution {
+    font-size: 0.72rem; color: rgba(255,255,255,0.35);
+    margin-top: 5px; font-style: normal;
+  }
+
+  /* Napoleon Dance Overlay */
+  #napoleon-dance {
+    display: none;
+    position: fixed; bottom: 80px; right: 40px;
+    z-index: 9000;
+    flex-direction: column; align-items: center;
+    pointer-events: none;
+  }
+  #napoleon-dance.active { display: flex; }
+  @keyframes napoleon-shuffle {
+    0%   { transform: translateX(0) rotate(-6deg) scaleX(1); }
+    20%  { transform: translateX(-14px) rotate(7deg) scaleX(-1); }
+    40%  { transform: translateX(0) rotate(-6deg) scaleX(1); }
+    60%  { transform: translateX(14px) rotate(7deg) scaleX(1); }
+    80%  { transform: translateX(0) rotate(-8deg) scaleX(-1); }
+    100% { transform: translateX(0) rotate(-6deg) scaleX(1); }
+  }
+  @keyframes napoleon-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .napoleon-dancer-svg {
+    animation: napoleon-shuffle 1.1s ease-in-out infinite, napoleon-bounce 0.55s ease-in-out infinite;
+    transform-origin: center bottom;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+  }
+  .dance-caption {
+    font-size: 0.68rem; color: rgba(255,255,255,0.55);
+    font-style: italic; text-align: center; margin-top: 6px;
+    background: rgba(0,0,0,0.45); padding: 3px 10px; border-radius: 20px;
+  }
+
+  /* Napoleon Weather Widget */
+  .napoleon-widget {
+    background: rgba(10, 7, 18, 0.75) !important;
+    border: 1px solid rgba(255,215,0,0.18) !important;
+    position: relative; overflow: hidden;
+  }
+  .napoleon-widget::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,215,0,0.45), transparent);
+  }
+  .napoleon-header-row {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 16px;
+  }
+  .napoleon-avatar-area { width: 54px; height: 68px; flex-shrink: 0; }
+  .napoleon-title-area { flex: 1; }
+  .napoleon-widget-name {
+    font-size: 0.95rem; font-weight: 700;
+    color: rgba(255,215,0,0.9); letter-spacing: 0.3px;
+  }
+  .napoleon-widget-sub {
+    font-size: 0.7rem; color: rgba(255,255,255,0.38);
+    text-transform: uppercase; letter-spacing: 1.2px; margin-top: 2px;
+  }
+  .napoleon-quote-text {
+    font-size: 1.02rem; color: rgba(255,255,255,0.88);
+    line-height: 1.65; font-style: italic; flex: 1;
+    display: flex; align-items: flex-start; gap: 6px;
+  }
+  .napoleon-quote-mark {
+    font-size: 3.2rem; line-height: 0;
+    color: rgba(255,215,0,0.18); flex-shrink: 0;
+    align-self: flex-start; margin-top: 18px;
+  }
+  .napoleon-skills-row {
+    margin-top: 16px; padding-top: 14px;
+    border-top: 1px solid rgba(255,215,0,0.1);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px;
+  }
+  .skill-label {
+    font-size: 0.68rem; color: rgba(255,255,255,0.45);
+    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 4px;
+  }
+  .skill-bar-track {
+    height: 4px; background: rgba(255,255,255,0.06);
+    border-radius: 2px; overflow: hidden;
+  }
+  .skill-bar-fill { height: 100%; border-radius: 2px; transition: width 0.9s ease; }
+  .skill-rating {
+    font-size: 0.68rem; color: rgba(255,215,0,0.65);
+    margin-top: 3px; font-style: italic;
+  }
+
+  /* Liger Badge */
+  .liger-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 11px 3px 8px;
+    background: rgba(138,43,226,0.18);
+    border: 1px solid rgba(180,100,255,0.4);
+    border-radius: 50px;
+    font-size: 0.73rem; font-weight: 600;
+    color: rgba(210,170,255,0.9);
+    letter-spacing: 0.4px; margin-left: 10px;
+    vertical-align: middle;
+  }
+  @keyframes liger-glow {
+    0%, 100% { box-shadow: 0 0 0 rgba(138,43,226,0); }
+    50% { box-shadow: 0 0 14px rgba(138,43,226,0.35); }
+  }
+  .liger-badge { animation: liger-glow 3s ease-in-out infinite; }
+
   /* Animations */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
@@ -714,6 +879,23 @@
       </div>
     </header>
     <div class="search-results" id="search-results"></div>
+
+    <!-- Vote for Pedro Weather Alert (shown on severe weather) -->
+    <div id="pedro-banner" class="animate-in">
+      <div class="pedro-poster">
+        <div class="pedro-silhouette">🗳️</div>
+        <div class="pedro-vote-text">VOTE<br>FOR<br>PEDRO</div>
+        <div class="pedro-vote-sub">for better weather</div>
+      </div>
+      <div class="pedro-content">
+        <div class="pedro-alert-title" id="pedro-alert-title">⚠️ Weather Advisory</div>
+        <div class="pedro-alert-desc" id="pedro-alert-desc">Conditions are pretty rough out there.</div>
+        <div class="pedro-napoleon-quote">
+          "<span id="pedro-napoleon-quote-text">Gosh.</span>"
+          <div class="pedro-napoleon-attribution">— Napoleon Dynamite, probably looking out a window right now</div>
+        </div>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <div class="hero-section">
@@ -888,6 +1070,22 @@
         <div id="cloud-visual" style="font-size:2.5rem;margin:8px 0;text-align:center;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));">☁️</div>
         <div class="widget-commentary" id="clouds-commentary"></div>
       </div>
+
+      <!-- Napoleon's Weather Take Widget -->
+      <div class="widget glass animate-in delay-5 napoleon-widget" id="widget-napoleon">
+        <div class="napoleon-header-row">
+          <div class="napoleon-avatar-area" id="napoleon-mini-dancer"></div>
+          <div class="napoleon-title-area">
+            <div class="napoleon-widget-name">Napoleon's Weather Take</div>
+            <div class="napoleon-widget-sub">Deadpan · Accurate · Whatever</div>
+          </div>
+        </div>
+        <div class="napoleon-quote-text">
+          <span class="napoleon-quote-mark">&ldquo;</span>
+          <span id="napoleon-quote-inner">Loading weather assessment...</span>
+        </div>
+        <div class="napoleon-skills-row" id="napoleon-skills"></div>
+      </div>
     </div>
 
     <!-- 7-Day Forecast -->
@@ -914,6 +1112,44 @@
       <div class="burgundy-ticker-container">
         <div class="burgundy-ticker-scroll" id="burgundy-ticker"></div>
       </div>
+    </div>
+
+    <!-- Napoleon Dance Overlay (shown on perfect weather) -->
+    <div id="napoleon-dance">
+      <svg width="72" height="90" viewBox="0 0 60 82" fill="none" class="napoleon-dancer-svg">
+        <!-- Curly hair -->
+        <ellipse cx="30" cy="12" rx="13" ry="10" fill="#c8a06e"/>
+        <circle cx="19" cy="9" r="4.5" fill="#c8a06e"/>
+        <circle cx="41" cy="9" r="4.5" fill="#c8a06e"/>
+        <circle cx="24" cy="4" r="3.5" fill="#c8a06e"/>
+        <circle cx="36" cy="4" r="3.5" fill="#c8a06e"/>
+        <!-- Head -->
+        <ellipse cx="30" cy="17" rx="10" ry="11" fill="#f5d5a8"/>
+        <!-- Glasses -->
+        <rect x="20" y="16" width="8" height="5" rx="2" fill="none" stroke="#5a3010" stroke-width="1.5"/>
+        <rect x="32" y="16" width="8" height="5" rx="2" fill="none" stroke="#5a3010" stroke-width="1.5"/>
+        <line x1="28" y1="18.5" x2="32" y2="18.5" stroke="#5a3010" stroke-width="1.5"/>
+        <!-- Neck -->
+        <rect x="26" y="26" width="8" height="5" fill="#f5d5a8"/>
+        <!-- Body shirt -->
+        <rect x="19" y="30" width="22" height="21" rx="3" fill="#7a3a10" opacity="0.9"/>
+        <!-- Belt -->
+        <rect x="18" y="49" width="24" height="3" rx="1.5" fill="#3a2000" opacity="0.8"/>
+        <!-- Jeans left leg -->
+        <rect x="19" y="52" width="10" height="24" rx="2.5" fill="#1e3a5f" opacity="0.9"/>
+        <!-- Jeans right leg -->
+        <rect x="31" y="52" width="10" height="24" rx="2.5" fill="#1e3a5f" opacity="0.9"/>
+        <!-- Boots -->
+        <ellipse cx="24" cy="77" rx="8" ry="4.5" fill="#2a1500" opacity="0.95"/>
+        <ellipse cx="36" cy="77" rx="8" ry="4.5" fill="#2a1500" opacity="0.95"/>
+        <!-- Left arm up -->
+        <line x1="19" y1="35" x2="5" y2="25" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="5" y1="25" x2="2" y2="34" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- Right arm up -->
+        <line x1="41" y1="35" x2="55" y2="25" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+        <line x1="55" y1="25" x2="58" y2="34" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+      </svg>
+      <div class="dance-caption">*happy weather noises*</div>
     </div>
 
     <!-- Footer -->
@@ -1172,6 +1408,244 @@ const RonBurgundy = {
     return pool[Math.floor(Math.random() * pool.length)];
   }
 };
+
+// ============================================================
+//  NAPOLEON DYNAMITE ENGINE
+// ============================================================
+const Napoleon = {
+
+  getWeatherTake(temp, condition, feelsLike, wind, humidity, clouds) {
+    const c = condition.toLowerCase();
+    const pool = [];
+
+    if (temp < -15) {
+      pool.push(
+        `It's ${temp}°. Gosh. Just... gosh.`,
+        `${temp}°. I don't even know what to say. My face stopped working.`,
+        `I'm not going outside. It's ${temp}° and that's pretty much the worst thing I've ever seen.`,
+        `${temp}°. I've had worse days but honestly I can't think of one right now.`
+      );
+    } else if (temp < 0) {
+      pool.push(
+        `${temp}°. That's cold. Like, really cold. Whatever.`,
+        `Why is it ${temp}°? Gosh! I didn't do anything to deserve this kind of atmosphere.`,
+        `It's ${temp}° and I have things to do but now I just... don't want to.`,
+        `My hands are basically useless right now. ${temp}°. This is a disaster.`
+      );
+    } else if (temp < 10) {
+      pool.push(
+        `${temp}°. It's okay I guess. Not great. Not terrible. Pretty much just there.`,
+        `I'll probably wear my jacket today. It's ${temp}° and I'm not an idiot.`,
+        `${temp}°. Could be worse. I've stopped having strong feelings about it.`
+      );
+    } else if (temp >= 10 && temp <= 22) {
+      pool.push(
+        `${temp}°. Finally. This is pretty much my favorite kind of weather ever.`,
+        `It's ${temp}° outside. I'd give it like a 9 out of 10. Maybe 8. The wind's doing something weird.`,
+        `Oh snap. ${temp}°. This weather has actual skills.`,
+        `${temp}°. If I were in a dance competition today, I'd win. The weather would be on my side.`,
+        `This is pretty much the best weather ever. ${temp}°. I'm not even kidding.`
+      );
+    } else if (temp > 35) {
+      pool.push(
+        `${temp}°?! Gosh! I'm sweating and I haven't even done anything yet.`,
+        `It's ${temp}°. That's like... a lot. I can feel my whole face.`,
+        `Gosh! ${temp}° is way too hot. My thoughts are just... melting.`
+      );
+    } else {
+      pool.push(
+        `${temp}°. That's pretty warm. I've been hotter. I fell asleep in the sun for like 4 hours once.`,
+        `It's ${temp}° out there. Bring a snack. And water. Mostly water.`,
+        `${temp}°. Summer skills: sort of activated. I need sunscreen probably.`
+      );
+    }
+
+    if (c.includes('thunder') || c.includes('storm') || c.includes('violent')) {
+      pool.push(
+        `There's a thunderstorm. This is legitimately one of the worst things that could happen to me right now.`,
+        `Gosh! A storm! I was going to go to the store. Now I literally can't. Thanks a lot, atmosphere.`,
+        `Lightning and thunder. I don't want to be outside. Like, at all.`
+      );
+    } else if (c.includes('snow') || c.includes('blizzard')) {
+      pool.push(
+        `It's snowing and I caught like three snowflakes on my tongue. Pretty cool actually.`,
+        `Snow day. I should probably do something but I'm just watching it from the window.`,
+        `Everything's white outside. I feel like I'm in a video game but a boring one with no enemies.`,
+        `Snowing out there. My boots have skills in this kind of weather. My face does not.`
+      );
+    } else if (c.includes('rain') || c.includes('drizzle') || c.includes('shower')) {
+      pool.push(
+        `It's raining. I hate rain. Not like HATE hate, but I definitely don't enjoy it.`,
+        `Raining outside. My hair is going to be ruined the second I step out. Total nightmare.`,
+        `It's raining and I don't have an umbrella because I lost it. Again. Whatever.`,
+        `Rain. Gosh. Just... rain.`
+      );
+    } else if (c.includes('fog') || c.includes('mist')) {
+      pool.push(
+        `I can't see anything. It's super foggy. Kind of awesome actually.`,
+        `The fog is pretty thick. I walked into the mailbox this morning. I'm fine.`,
+        `Foggy today. I feel like I'm in a mystery novel except nothing interesting is happening.`
+      );
+    } else if (c.includes('clear') || c.includes('sunny')) {
+      pool.push(
+        `Clear skies. I might go outside and do something. Probably not but I might.`,
+        `Sunny today. Perfect weather for practicing skills. Any kind of skills.`,
+        `It's clear and nice out. Uncle Rico would be throwing a football right now. Whatever.`
+      );
+    } else if (c.includes('overcast') || clouds > 85) {
+      pool.push(
+        `Overcast. The sky is just... sitting there. Being grey. Whatever.`,
+        `Really cloudy. Like the sky can't decide what it wants to do. I know that feeling.`,
+        `It's overcast and moody up there. Kind of like Deb before she had her hair did.`
+      );
+    } else if (c.includes('partly') || (clouds > 20 && clouds < 65)) {
+      pool.push(
+        `Partly cloudy. Half sun, half not. Like a liger — bred for its skills in magic.`,
+        `Some clouds, some sun. The sky is being both things at once. Best of both worlds.`,
+        `Part cloudy, part nice. This weather can't commit to anything. I respect that honestly.`
+      );
+    }
+
+    if (wind > 40) {
+      pool.push(
+        `Wind is like ${wind} km/h. My hair is totally useless right now.`,
+        `It's really windy. I walked outside and the wind just took over my whole face situation.`
+      );
+    }
+    if (humidity > 80) {
+      pool.push(`It's so humid. I feel like I'm breathing soup. I hate soup weather.`);
+    }
+
+    if (pool.length === 0) {
+      pool.push(
+        `It's ${temp}° with ${condition}. Not much else to say about that.`,
+        `${condition} and ${temp}°. Gosh.`,
+        `Weather report: ${temp}° and ${condition}. Pretty much medium. Neither good nor bad. Just there.`
+      );
+    }
+    return pool[Math.floor(Math.random() * pool.length)];
+  },
+
+  getComfortSkill(feelsLike) {
+    const diff = Math.abs(feelsLike - 20);
+    const score = Math.max(0, Math.min(10, 10 - diff * 0.38));
+    return { score: Math.round(score), pct: score / 10, ...this._label(score) };
+  },
+
+  getOutdoorSkill(temp, wind, precip, clouds) {
+    let score = 10;
+    if (temp < 0) score -= 4; else if (temp < 5) score -= 2;
+    if (temp > 35) score -= 4; else if (temp > 28) score -= 2;
+    if (wind > 60) score -= 3; else if (wind > 40) score -= 2; else if (wind > 25) score -= 1;
+    score -= Math.min(precip * 2, 4);
+    if (clouds > 85) score -= 1;
+    score = Math.max(0, Math.min(10, score));
+    return { score: Math.round(score), pct: score / 10, ...this._label(score) };
+  },
+
+  getSunSkill(uvIndex, clouds) {
+    const base = Math.min(uvIndex / 8, 1);
+    const score = Math.round(base * (1 - (clouds / 100) * 0.7) * 10);
+    return { score, pct: score / 10, ...this._sunLabel(score) };
+  },
+
+  getVisSkill(vis) {
+    const score = Math.min(Math.round(vis), 10);
+    return { score, pct: score / 10, ...this._label(score) };
+  },
+
+  _label(score) {
+    if (score >= 9) return { label: 'MIND-BLOWING', color: '#60a5fa' };
+    if (score >= 7) return { label: 'sweet skills', color: '#34d399' };
+    if (score >= 5) return { label: 'not bad', color: '#fbbf24' };
+    if (score >= 3) return { label: 'pretty lame', color: '#f97316' };
+    return { label: 'basically zero', color: '#ef4444' };
+  },
+
+  _sunLabel(score) {
+    if (score >= 9) return { label: 'MIND-BLOWING', color: '#fbbf24' };
+    if (score >= 7) return { label: 'sweet skills', color: '#f97316' };
+    if (score >= 5) return { label: 'not bad', color: '#fbbf24' };
+    if (score >= 3) return { label: 'pretty lame', color: '#60a5fa' };
+    return { label: 'basically zero', color: '#94a3b8' };
+  },
+
+  shouldShowPedro(temp, condition, wind, precip) {
+    const c = condition.toLowerCase();
+    return temp < -18 || temp > 38 ||
+      c.includes('thunder') || c.includes('storm') || c.includes('violent') ||
+      wind > 70 || precip > 15;
+  },
+
+  getPedroBannerInfo(temp, condition, wind, precip) {
+    const c = condition.toLowerCase();
+    if (c.includes('thunder') || c.includes('storm') || c.includes('violent'))
+      return { title: '⚡ THUNDERSTORM WARNING', desc: 'Pedro promises: vote for him and he\'ll make all your weather dreams come true. Starting by removing this storm.' };
+    if (precip > 15)
+      return { title: '🌧️ SEVERE PRECIPITATION', desc: 'This weather is out of control. Pedro would fix it. He has skills. Not weather skills specifically, but still.' };
+    if (temp < -18)
+      return { title: '🥶 EXTREME COLD WARNING', desc: 'It is dangerously cold. Pedro recommends you stay inside. He\'s looking out for you.' };
+    if (temp > 38)
+      return { title: '🔥 EXTREME HEAT WARNING', desc: 'Dangerously hot out there. Pedro says: water, shade, chapstick. He knows what he\'s doing.' };
+    if (wind > 70)
+      return { title: '💨 HIGH WIND WARNING', desc: 'Winds are intense. Pedro\'s hair is completely ruined and he\'s understandably very upset about it.' };
+    return { title: '⚠️ SEVERE WEATHER ADVISORY', desc: 'Conditions are pretty bad right now. Vote for Pedro. He\'ll handle it somehow.' };
+  },
+
+  getPedroQuote(temp, condition) {
+    const c = condition.toLowerCase();
+    const pool = [];
+    if (c.includes('thunder') || c.includes('storm'))
+      pool.push(`This weather has shown me it can do pretty much anything it wants. Gosh.`, `I'm just gonna stay inside and make a dang quesadilla.`);
+    if (temp < -18)
+      pool.push(`It's so cold my chapstick froze. Worst thing that's ever happened to me.`, `I've never felt more like a cold piece of ham in my entire life.`);
+    if (temp > 38)
+      pool.push(`It's like a billion degrees outside. My liger would be uncomfortable.`, `I'm staying inside to draw a picture of my favorite weather. Which is not this.`);
+    pool.push(
+      `This weather is pretty much the worst thing I've ever seen in my entire life.`,
+      `Gosh! Why would it do that to us?`,
+      `I don't even know what this weather is doing but I don't like it.`,
+      `Last night I stayed up till like 3 AM making a cardboard time machine so I could go to yesterday when it was nicer.`
+    );
+    return pool[Math.floor(Math.random() * pool.length)];
+  },
+
+  isPerfectWeather(tempC, condition, wind) {
+    const c = condition.toLowerCase();
+    return tempC >= 18 && tempC <= 26 && wind < 20 &&
+      !c.includes('rain') && !c.includes('storm') && !c.includes('snow') && !c.includes('drizzle');
+  },
+
+  isLigerWeather(condition, clouds) {
+    const c = condition.toLowerCase();
+    return c.includes('partly') || (clouds > 20 && clouds < 65 && !c.includes('rain') && !c.includes('storm') && !c.includes('snow'));
+  }
+};
+
+function napoleonSVG(w, h) {
+  return `<svg width="${w}" height="${h}" viewBox="0 0 60 82" fill="none">
+    <ellipse cx="30" cy="12" rx="13" ry="10" fill="#c8a06e"/>
+    <circle cx="19" cy="9" r="4.5" fill="#c8a06e"/>
+    <circle cx="41" cy="9" r="4.5" fill="#c8a06e"/>
+    <circle cx="24" cy="4" r="3.5" fill="#c8a06e"/>
+    <circle cx="36" cy="4" r="3.5" fill="#c8a06e"/>
+    <ellipse cx="30" cy="17" rx="10" ry="11" fill="#f5d5a8"/>
+    <rect x="20" y="16" width="8" height="5" rx="2" fill="none" stroke="#5a3010" stroke-width="1.5"/>
+    <rect x="32" y="16" width="8" height="5" rx="2" fill="none" stroke="#5a3010" stroke-width="1.5"/>
+    <line x1="28" y1="18.5" x2="32" y2="18.5" stroke="#5a3010" stroke-width="1.5"/>
+    <rect x="26" y="26" width="8" height="5" fill="#f5d5a8"/>
+    <rect x="19" y="30" width="22" height="21" rx="3" fill="#7a3a10" opacity="0.9"/>
+    <rect x="18" y="49" width="24" height="3" rx="1.5" fill="#3a2000" opacity="0.8"/>
+    <rect x="19" y="52" width="10" height="24" rx="2.5" fill="#1e3a5f" opacity="0.9"/>
+    <rect x="31" y="52" width="10" height="24" rx="2.5" fill="#1e3a5f" opacity="0.9"/>
+    <ellipse cx="24" cy="77" rx="8" ry="4.5" fill="#2a1500" opacity="0.95"/>
+    <ellipse cx="36" cy="77" rx="8" ry="4.5" fill="#2a1500" opacity="0.95"/>
+    <line x1="19" y1="35" x2="5" y2="25" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="5" y1="25" x2="2" y2="34" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="41" y1="35" x2="55" y2="25" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="55" y1="25" x2="58" y2="34" stroke="#f5d5a8" stroke-width="3.5" stroke-linecap="round"/>
+  </svg>`;
+}
 
 // ============================================================
 //  WEATHER CONDITION MAPPING
@@ -1668,6 +2142,64 @@ function renderWeather() {
   const cloudIcons = clouds < 10 ? '☀️' : clouds < 30 ? '🌤️' : clouds < 60 ? '⛅' : clouds < 85 ? '🌥️' : '☁️';
   document.getElementById('cloud-visual').textContent = cloudIcons;
   document.getElementById('clouds-commentary').textContent = MSCommentary.getClouds(clouds);
+
+  // ——— Napoleon Features ———
+  const precipNow = cur.precipitation || 0;
+  const visNow = hourly.visibility?.[startIdx] ? hourly.visibility[startIdx] / 1000 : 10;
+  const uvNow = hourly.uv_index?.[startIdx] || 0;
+
+  // Napoleon quote widget
+  const napQuote = Napoleon.getWeatherTake(displayTemp, wmo.desc, convertTemp(cur.apparent_temperature), Math.round(cur.wind_speed_10m), cur.relative_humidity_2m, clouds);
+  document.getElementById('napoleon-quote-inner').textContent = napQuote;
+
+  // Napoleon mini dancer SVG in widget
+  document.getElementById('napoleon-mini-dancer').innerHTML = napoleonSVG(54, 68);
+
+  // Skills meters
+  const comfortSkill  = Napoleon.getComfortSkill(convertTemp(cur.apparent_temperature));
+  const outdoorSkill  = Napoleon.getOutdoorSkill(cur.temperature_2m, Math.round(cur.wind_speed_10m), precipNow, clouds);
+  const sunSkill      = Napoleon.getSunSkill(uvNow, clouds);
+  const visSkill      = Napoleon.getVisSkill(visNow);
+  document.getElementById('napoleon-skills').innerHTML = [
+    { key: 'Comfort Skills',    s: comfortSkill  },
+    { key: 'Outdoor Skills',    s: outdoorSkill  },
+    { key: 'Sun Skills',        s: sunSkill      },
+    { key: 'Visibility Skills', s: visSkill      }
+  ].map(({ key, s }) => `
+    <div>
+      <div class="skill-label">${key}</div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" style="width:${s.pct*100}%;background:${s.color};"></div></div>
+      <div class="skill-rating">${s.label}</div>
+    </div>`).join('');
+
+  // Vote for Pedro severe weather banner
+  const pedroBanner = document.getElementById('pedro-banner');
+  if (Napoleon.shouldShowPedro(cur.temperature_2m, wmo.desc, Math.round(cur.wind_speed_10m), precipNow)) {
+    const info = Napoleon.getPedroBannerInfo(cur.temperature_2m, wmo.desc, Math.round(cur.wind_speed_10m), precipNow);
+    document.getElementById('pedro-alert-title').innerHTML = info.title;
+    document.getElementById('pedro-alert-desc').textContent = info.desc;
+    document.getElementById('pedro-napoleon-quote-text').textContent = Napoleon.getPedroQuote(cur.temperature_2m, wmo.desc);
+    pedroBanner.classList.add('active');
+  } else {
+    pedroBanner.classList.remove('active');
+  }
+
+  // Napoleon dance on perfect weather
+  const danceEl = document.getElementById('napoleon-dance');
+  if (Napoleon.isPerfectWeather(cur.temperature_2m, wmo.desc, Math.round(cur.wind_speed_10m))) {
+    danceEl.classList.add('active');
+  } else {
+    danceEl.classList.remove('active');
+  }
+
+  // Liger badge on partly cloudy
+  document.querySelectorAll('.liger-badge').forEach(el => el.remove());
+  if (Napoleon.isLigerWeather(wmo.desc, clouds)) {
+    const badge = document.createElement('span');
+    badge.className = 'liger-badge';
+    badge.textContent = '🐯 Like a Liger';
+    document.getElementById('current-condition').insertAdjacentElement('afterend', badge);
+  }
 }
 
 function renderSunPath(sunriseISO, sunsetISO, tz) {
