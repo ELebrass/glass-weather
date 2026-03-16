@@ -179,14 +179,14 @@
     color: rgba(255,255,255,0.4); pointer-events: none;
   }
   .search-results {
-    position: absolute; top: calc(100% + 8px); left: 0; right: 0;
-    background: rgba(15,23,42,0.95);
+    position: fixed;
+    background: rgba(15,23,42,0.97);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: var(--radius-sm); overflow: hidden;
-    z-index: 99999; display: none;
+    z-index: 999999; display: none;
     max-height: 300px; overflow-y: auto;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
   }
   .search-results.active { display: block; }
   .search-result-item {
@@ -705,7 +705,6 @@
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
         <input type="text" class="search-input" id="city-search" placeholder="Search any city worldwide..." autocomplete="off">
-        <div class="search-results" id="search-results"></div>
       </div>
       <div class="settings-bar">
         <div class="unit-toggle">
@@ -714,6 +713,7 @@
         </div>
       </div>
     </header>
+    <div class="search-results" id="search-results"></div>
 
     <!-- Hero Section -->
     <div class="hero-section">
@@ -1361,6 +1361,13 @@ async function reverseGeocode(lat, lon) {
 const searchInput = document.getElementById('city-search');
 const searchResults = document.getElementById('search-results');
 
+function positionDropdown() {
+  const rect = searchInput.getBoundingClientRect();
+  searchResults.style.top = (rect.bottom + 8) + 'px';
+  searchResults.style.left = rect.left + 'px';
+  searchResults.style.width = rect.width + 'px';
+}
+
 searchInput.addEventListener('input', (e) => {
   clearTimeout(state.searchTimeout);
   const q = e.target.value.trim();
@@ -1374,6 +1381,7 @@ searchInput.addEventListener('input', (e) => {
         <span class="search-result-country">${c.country || ''}</span>
       </div>
     `).join('');
+    positionDropdown();
     searchResults.classList.add('active');
   }, 300);
 });
