@@ -157,6 +157,7 @@
   /* Search */
   .search-container {
     position: relative; width: 100%; max-width: 500px;
+    z-index: 9999;
   }
   .search-input {
     width: 100%; padding: 12px 20px 12px 44px;
@@ -179,12 +180,13 @@
   }
   .search-results {
     position: absolute; top: calc(100% + 8px); left: 0; right: 0;
-    background: rgba(15,23,42,0.9);
+    background: rgba(15,23,42,0.95);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: var(--radius-sm); overflow: hidden;
-    z-index: 100; display: none;
+    z-index: 99999; display: none;
     max-height: 300px; overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   }
   .search-results.active { display: block; }
   .search-result-item {
@@ -1711,7 +1713,7 @@ async function loadWeather() {
 }
 
 async function init() {
-  // Try geolocation
+  // Try geolocation with high accuracy
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
@@ -1726,7 +1728,7 @@ async function init() {
         // Fallback: use IP geolocation
         await fallbackLocation();
       },
-      { timeout: 8000 }
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 300000 }
     );
   } else {
     await fallbackLocation();
@@ -1734,20 +1736,42 @@ async function init() {
 }
 
 async function fallbackLocation() {
-  try {
-    const res = await fetch('https://ipapi.co/json/');
-    const data = await res.json();
-    state.lat = data.latitude;
-    state.lon = data.longitude;
-    state.cityName = data.city || 'Unknown';
-    state.country = data.country_name || '';
-  } catch {
-    // Ultimate fallback: London
-    state.lat = 51.51;
-    state.lon = -0.13;
-    state.cityName = 'London';
-    state.country = 'United Kingdom';
+  // Try multiple IP geolocation services for accuracy
+  const services = [
+    async () => {
+      const res = await fetch('https://api.ipbase.com/v1/json/');
+      const data = await res.json();
+      return { lat: data.latitude, lon: data.longitude, city: data.city, country: data.country_name };
+    },
+    async () => {
+      const res = await fetch('https://ipwho.is/');
+      const data = await res.json();
+      return { lat: data.latitude, lon: data.longitude, city: data.city, country: data.country };
+    },
+    async () => {
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+      return { lat: data.latitude, lon: data.longitude, city: data.city, country: data.country_name };
+    }
+  ];
+  for (const service of services) {
+    try {
+      const loc = await service();
+      if (loc.lat && loc.lon) {
+        state.lat = loc.lat;
+        state.lon = loc.lon;
+        state.cityName = loc.city || 'Unknown';
+        state.country = loc.country || '';
+        await loadWeather();
+        return;
+      }
+    } catch {}
   }
+  // Ultimate fallback: London
+  state.lat = 51.51;
+  state.lon = -0.13;
+  state.cityName = 'London';
+  state.country = 'United Kingdom';
   await loadWeather();
 }
 
