@@ -291,32 +291,26 @@
 
   /* Commentary panel */
   .commentary-panel {
-    padding: 32px; display: flex; flex-direction: column;
+    padding: 36px 32px; display: flex; flex-direction: column;
+    justify-content: center;
     position: relative; overflow: hidden;
   }
-  .commentary-avatar {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), #818cf8);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; margin-bottom: 16px;
-    box-shadow: 0 4px 16px rgba(96,165,250,0.3);
-  }
-  .commentary-speaker {
-    font-size: 0.8rem; color: var(--accent);
-    font-weight: 600; text-transform: uppercase;
-    letter-spacing: 1.5px; margin-bottom: 8px;
-  }
+  .commentary-avatar { display: none; }
+  .commentary-speaker { display: none; }
   .commentary-text {
-    font-size: 1.15rem; line-height: 1.6;
+    font-size: 1.25rem; line-height: 1.7;
     font-weight: 400; flex: 1;
     font-style: italic;
+    color: rgba(255,255,255,0.92);
+    display: flex; align-items: center;
   }
   .commentary-text .quote-mark {
-    font-size: 3rem; line-height: 0; vertical-align: middle;
-    color: rgba(255,255,255,0.15); margin-right: 4px;
+    font-size: 4.5rem; line-height: 0; vertical-align: top;
+    color: rgba(255,255,255,0.2); margin-right: 8px;
+    flex-shrink: 0; align-self: flex-start; margin-top: 16px;
   }
   .commentary-mood {
-    margin-top: 16px; padding: 8px 16px;
+    margin-top: 20px; padding: 8px 16px;
     background: rgba(255,255,255,0.06);
     border-radius: 50px; display: inline-flex;
     align-items: center; gap: 8px;
@@ -352,8 +346,8 @@
   .widget-subtitle { color: var(--text-secondary); font-size: 0.9rem; }
   .widget-commentary {
     margin-top: auto; padding-top: 12px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    font-size: 0.82rem; color: var(--text-muted);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.84rem; color: rgba(255,255,255,0.75);
     font-style: italic; line-height: 1.5;
   }
 
@@ -582,33 +576,33 @@
     flex-shrink: 0; width: 280px;
     padding: 20px; scroll-snap-align: start;
     border-radius: var(--radius-sm);
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(14px);
     transition: all 0.3s ease;
     cursor: default;
   }
   .burgundy-card:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.2);
     transform: translateY(-2px);
   }
   .burgundy-city-row {
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 12px;
   }
-  .burgundy-city { font-weight: 600; font-size: 1rem; }
-  .burgundy-country { color: var(--text-muted); font-size: 0.8rem; }
+  .burgundy-city { font-weight: 600; font-size: 1rem; color: #fff; }
+  .burgundy-country { color: rgba(255,255,255,0.7); font-size: 0.8rem; }
   .burgundy-temp {
-    font-size: 1.8rem; font-weight: 700; letter-spacing: -1px;
+    font-size: 1.8rem; font-weight: 700; letter-spacing: -1px; color: #fff;
   }
   .burgundy-condition {
-    font-size: 0.85rem; color: var(--text-secondary);
+    font-size: 0.85rem; color: rgba(255,255,255,0.8);
     margin-bottom: 12px; text-transform: capitalize;
   }
   .burgundy-quote {
-    padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06);
-    font-size: 0.8rem; color: var(--accent-warm);
+    padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.84rem; color: #fcd34d;
     font-style: italic; line-height: 1.5;
   }
 
